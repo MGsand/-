@@ -20,7 +20,10 @@ using namespace std; // чтобы не подключать std
 int main ()
 {
   char **text;
-  int i,j;//счётчик
+  int i,j;
+  *text=new char(20);
+  for(i=0;i<20;i++)
+  text[i]=new char(20);
   for(i=0;i<20;i++)
    for(j=0;j<20;j++)
    cout<<text[i][j]<<cin;
