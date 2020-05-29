@@ -8,7 +8,7 @@ int ii = 0; //���������� �������� �� q
 
 void Shellsort(char* A, int N)
 {
-    int h = 2, i, j, k, T;
+    int h = 2, i, j, k;
     char temp, t;
     for (k = h; k > 0; k--) {
         for (i = k; i < N; i++) {
@@ -26,11 +26,8 @@ void Shellsort(char* A, int N)
     }
 }
 
-/*
-
-void Shellsort(char* A, int N)
+/*void Shellsort(char* A, int N)
 {
-        /*
         if(strlen(text) == 1){
         text = new char(1);
         text[0] = a;}
@@ -85,7 +82,7 @@ void f(int i, char*& p)
 
 int main()
 {
-    char* text;
+    //   char* text;
     // text = new char(1);
     char* p;
 
