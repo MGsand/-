@@ -19,7 +19,7 @@ spis* addElement(spis* lst){
   char slovo[20];
   spis *temp;
   temp = new spis;
-  printf("Введите слово: ");
+//  printf("Введите слово: ");
   scanf("%s",slovo);
   lst->next = temp;
   temp->next = NULL;
@@ -69,7 +69,7 @@ int main(){
   setlocale(LC_ALL,"Russian");
   spis *head, *p;
   int i, n;
-  printf("Введите количество элементов в алфавите: ");
+  printf("Введите количество слов в списке: ");
   scanf("%d",&n);
   head = create();
   p = head;
