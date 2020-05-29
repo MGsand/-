@@ -5,8 +5,8 @@
 #include <iostream>     // подключаем cout
 using namespace std; // чтобы не подключать std
  
-int ii=0;
-
+  int ii = 0; //Количество символов до q
+  
 void Shellsort(char *A,int N){
 	int h=2,i,j,k,T;
 	char temp,t;
@@ -29,7 +29,7 @@ void Shellsort(char *A,int N){
 }
 
 
-
+/*
 
 void AddToSorted(char ch,char *text)
 {
@@ -39,7 +39,7 @@ void AddToSorted(char ch,char *text)
 	text[0] = a;}
 	*/
 	//else{
-	text= new char[ii];
+	/*text= new char[ii];
 	text[ii] = ch;
 	ii++;
 	text=new char[ii];
@@ -61,14 +61,34 @@ for (int i=0; i<ii; i++)
 }
 printf("\n");
 }
+*/
+void f(int i, char *&p) {
+    char a;
+    ii++;
+    scanf("%c",&a);  //////////////////  scanf("% DDDDD  CCCC   c",&a); 
+    if(a=='q') 
+	 { 
+	 	 p=new char [i+1]; 
+		 p[i]=a; 
+		 return;}
+     f(i+1,p);
+     p[i]=a;
+     printf("%d %c\n",i,a);
+}
+
  
  
 int main ()
 {
   char * text;
   //text = new char(1);
+  char *p;
   
-  
+  printf("Vvedite stroki slov. q = zakanchivaet \n");
+ 
+  f(0,p);
+      
+ /* 
 //printf("ghghg");
   int i,j;
   char a='1';
@@ -82,27 +102,18 @@ int main ()
 	  }
   }
   text[ii+1]='\0';
-//  cout<<text;
+    */
+   for(int j=0; p[j]; j++) 
+	   printf("%c,",p[j]);
+	printf("\n");   
+       
+   printf("\n%d = lenth\n",ii) ;   
+   Shellsort(p, ii);
 
-   printf("%s", text);  
-  /*cin>>text[][];  
+   printf("Result is...");
   
-  for(i=0;i<20;i++)
-  text[i]=new char(20);
-  for(i=0;i<20;i++)
-   for(j=0;j<20;j++)
-   cout<<text[i][j]<<cin;
-  //сортировка по возрастанию
- // qsort (text, 20, sizeof(char**), comp1); //about and hi i that the this url
- 
-  //ввывод результатов на экран
- /* for(i=0; i<20; i++)
-   for(j=0;j<20;j++)
-	cout<<text[i][j]<<" ";
-  cout<<"\n";
- 
- */
- 
- 
- 
-  system("pause");}
+
+   for(int j=0; p[j]; j++) 
+	   printf("%c,",p[j]);
+   printf("\n");        
+   system("pause");}
