@@ -1,86 +1,34 @@
-#include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct st{
-  char slovo[20];
-  struct st* next;
-}spis;
+char String[3000];
+int Words[1500];
+int Number;
 
-spis* create(){
-  spis* lst;
-  lst = new spis;
-  lst->next = NULL;
-  return (lst);
-}
-
-spis* addElement(spis* lst){
-  char slovo[20];
-  spis *temp;
-  temp = new spis;
-//  printf("Введите слово: ");
-  scanf("%s",slovo);
-  lst->next = temp;
-  temp->next = NULL;
-  strcpy(temp->slovo,slovo);
-  return (temp);
-}
-
-void listPrint(spis* head){
-  spis* p;
-  p = head->next;
-  while(p != NULL){
-    printf("%s\n",p->slovo);
-    p = p->next;
-  }
-}
-
-void sortList(spis* head){
-  spis *p, *t1, *t2;
-  int i;
-  do{
-    i = 0;
-    for(p = head; p->next->next; p = p->next){
-      t1 = p->next;
-      t2 = t1->next;
-      if(strcmp(t1->slovo,t2->slovo) > 0){
-        p->next = t2;
-        t1->next = t2->next;
-        t2->next = t1;
-        i = 1;
+int main()
+{
+    int i, j, temp;
+    int flag;
+    printf("Введите строку > \n");
+    gets(String);
+    for (Number = 0, flag = 1, i = 0; String[i]; i++) {
+        if (String[i] == ' ') {
+            String[i] = 0;
+            flag = 1;
+        } else if (flag) {
+            Words[Number++] = i;
+            flag = 0;
         }
     }
-  }while(i);
-}
-
-void freeSpis(spis* head){
-  spis *p, *q;
-  q = p = head;
-  while(p != NULL){
-    p = q->next;
-    delete(q);
-    q = p;
-  }
-  head = NULL;
-}
-
-int main(){
-  setlocale(LC_ALL,"Russian");
-  spis *head, *p;
-  int i, n;
-  printf("Введите количество слов в списке: ");
-  scanf("%d",&n);
-  head = create();
-  p = head;
-  for(i = 0; i < n; i++){
-    p = addElement(p);
-  }
-  printf("Исходный список\n");
-  listPrint(head);
-  printf("Отсортированный список\n");
-  sortList(head);
-  listPrint(head);
-  freeSpis(head);
-  return 0;
+    for (j = Number - 1; j > 0; j--)
+        for (i = 0; i < j; i++)
+            if (strcmp(&String[Words[i]], &String[Words[i + 1]]) > 0) {
+                temp = Words[i];
+                Words[i] = Words[i + 1];
+                Words[i + 1] = temp;
+            }
+    for (i = 0; i < Number; i++)
+        printf("%s ", &String[Words[i]]);
+    return 0;
 }
