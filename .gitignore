@@ -1,2 +1,6 @@
 main
 a.out
+.vscode
+*.o
+prog
+sort.txt
