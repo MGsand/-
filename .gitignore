@@ -4,3 +4,5 @@ a.out
 *.o
 prog
 sort.txt
+test
+ctest
