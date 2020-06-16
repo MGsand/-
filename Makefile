@@ -28,6 +28,9 @@ bin/test: build/test/test.o build/test/main.o
 run:
 	./bin/prog ./word.txt
 
+run_test:
+	./bin/test
+
 .PHONY: clean all
 
 clean:
